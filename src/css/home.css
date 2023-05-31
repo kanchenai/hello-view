@@ -1,0 +1,32 @@
+.title{
+    top: 40px;
+    white-space: nowrap;
+    color: white;
+    font-size: 28px;
+}
+
+.view_bg{
+    width: 270px;
+    height: 610px;
+    top: 90px;
+    background: #404040;
+    border-radius: 15px;
+}
+
+.base_view{
+    width: 250px;
+    height: 570px;
+    top: 110px;
+    overflow: hidden;
+}
+
+.button{
+    font-size: 18px;
+}
+
+.button .focus{
+    border: 3px solid red;
+    width: 120px;
+    height: 60px;
+    border-radius: 7px;
+}
