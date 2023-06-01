@@ -4,8 +4,6 @@ require('./global_style.css')
 
 import State from "@core/frame/util/State";
 import Application from "@core/frame/app/Application";
-//ViewManager的import必须在Application（或子类）之后，否则会出现编译问题
-import ViewManager from "@core/frame/view/base/ViewManager";
 import {KeyboardViewBuilder} from "@src/custom-view/keyborad/KeyboardView";
 import {CountdownViewBuilder} from "@src/custom-view/countdown/CountdownView";
 import {PosterWhiteViewBuilder} from "@src/custom-view/poster-white/PosterWhiteView";
@@ -19,7 +17,7 @@ import {ProgressViewBuilder} from "@src/custom-view/progress/ProgressView";
 var start = new Date().getTime();
 window.onload = function () {
     //添加自定义控件的创建工具
-    ViewManager.addCustomViewBuilder([
+    Application.addCustomViewBuilder([
         KeyboardViewBuilder, CountdownViewBuilder, PosterWhiteViewBuilder,
         ButtonBuilder, PosterViewBuilder, PosterShadowViewBuilder,
         CarouselViewBuilder, DrawerViewBuilder, ProgressViewBuilder
