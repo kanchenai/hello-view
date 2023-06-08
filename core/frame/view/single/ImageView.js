@@ -169,5 +169,5 @@ export default class ImageView extends View {
             }
         }
     }
-}
+};
 
