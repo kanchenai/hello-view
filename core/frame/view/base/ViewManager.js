@@ -88,7 +88,7 @@ export default class ViewManager {
                     break;
                 default:
                     var customView = null;
-                    if (customViewBuilder[viewType]) {//该控件为自定义控件
+                    if (customViewBuilder[viewType]) {//该控件为扩展控件
                         var viewBuilder = customViewBuilder[viewType];
                         if (viewBuilder) {
                             customView = viewBuilder.buildView(child_ele, this, listenerLocation);
@@ -141,6 +141,7 @@ export default class ViewManager {
         } else if (_next.focusable) {//ItemView和GroupView都是View的子类，且只有这两类的对象可以执行上焦操作
             _next.requestFocus();
         } else {
+            //TODO 边界监听
             console.warn("操作值错误！", _next)
         }
     }
@@ -156,7 +157,7 @@ export default class ViewManager {
 
     /**
      * 在main.js中使用时，import顺序，ViewManager一定要比Application（或子类）晚
-     * 添加自定义控件的的builder
+     * 添加扩展控件的的builder
      * 需要在创建页面之前执行，一版在main.js中application.launch()之前
      * @param{Array} viewBuilderConstructorList
      */
@@ -168,7 +169,7 @@ export default class ViewManager {
             viewType = viewType.toLocaleUpperCase()
 
             if (customViewBuilder[viewType]) {//已存在
-                console.error("自定义控件" + viewType + "已被定义");
+                console.error("扩展控件" + viewType + "已被定义");
             } else {
                 customViewBuilder[viewType] = viewBuilder;
             }
@@ -217,7 +218,7 @@ export class ViewBuilder {
     }
 
     /**
-     * 根据相关信息创建自定义控件
+     * 根据相关信息创建扩展控件
      * @param ele 空间对应的节点
      * @param viewManager
      * @param listenerLocation 控件监听所在的组件
